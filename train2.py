@@ -85,6 +85,7 @@ for epoch in range(num_epochs):
             img = torchvision.utils.make_grid(outputs)
             img = img / 2 + 0.5  # unnormalize
             torchvision.utils.save_image(img, f'{save_dir}/epoch_{epoch}_iter_{i}.jpg')
+        torch.save(model.state_dict(), r"C:\Users\ratho\Desktop\summer_try2\models"+"/"+str(epoch)+"_"+str(i)+".pth")
         if (i+1) % 10 == 0:
             print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_loader)}], LPIPS: {lpips_val.item():.4f}')
             print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_loader)}], ssim: {ssim_val.item():.4f}')
